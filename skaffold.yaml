@@ -1,0 +1,19 @@
+apiVersion: skaffold/v1beta8
+kind: Config
+build:
+  tagPolicy:
+    sha256: {}
+  # defines where to find the code at build time and where to push the resulting image
+  artifacts:
+    - image: api-gateway-service
+      context: services/api-gateway
+# defines the Kubernetes manifests to deploy on each run
+deploy:
+  kubectl:
+    manifests:
+      - ./services/**/manifests/*.yaml
+profiles:
+  # use the cloudbuild
+  - name: cloudbuild
+    build:
+      googleCloudBuild: {}

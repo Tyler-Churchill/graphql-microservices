@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "api-gateway-service": "yarn --cwd services/chat start",
+    "chat-service": "yarn --cwd services/api-gateway start",
+    "start": "concurrently 'npm:*-service'"
+  },
+  "dependencies": {
+    "concurrently": "^4.1.0"
+  }
+}
